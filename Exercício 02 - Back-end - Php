@@ -28,3 +28,271 @@ foreach ($notas as $nota) {
 }
 ?>
 
+3 - (1133) Rest of a Division
+
+<?php
+
+$x = intval(readline());
+$y = intval(readline());
+
+if($x > $y)
+{
+  $temp = $i;
+  $x = $y;
+  $y = $temp;
+}
+  for($i = $x + 1; $i < $y; $i++)
+  {
+    if($i % 5 == 2 || $i % 5 == 3)
+    {
+      echo $i . "\n";
+    }
+  }
+?>
+
+4 - (1101) Sequence of Numbers and Sum
+
+<?php
+
+while (true) {
+  fscanf(STDIN, "%d %d", $m, $n);
+
+  if ($m == 0 && $n == 0) {
+    break;
+  }
+
+  if ($m > $n) {
+    $temp = $m;
+    $m = $n;
+    $n = $temp;
+  }
+  $sum = 0;
+
+  for ($i = $m; $i <= $n; $i++){
+    echo $i. ' ';
+    $sum += $i;
+  }
+
+  echo "Sum=".$sum."\n";
+} 
+?>
+
+5 - (1789) The Race of Slugs
+
+<?php
+
+while (true) {
+    $n = intval(fgets(STDIN));
+    if ($n == 0) {
+        break;
+    }
+
+    $velocidades = explode(" ", fgets(STDIN));
+
+    $velocidade_maxima = 0;
+    for ($i = 0; $i < $n; $i++) {
+        $velocidade = intval($velocidades[$i]);
+        if ($velocidade > $velocidade_maxima) {
+            $velocidade_maxima = $velocidade;
+        }
+    }
+
+    if ($velocidade_maxima < 10) {
+        echo "1\n";
+    } else if ($velocidade_maxima < 20) {
+        echo "2\n";
+    } else {
+        echo "3\n";
+    }
+}
+?>
+
+6 -  (1071) Sum of Consecutive Odd NumbersI
+<?php
+
+$x = intval(trim(fgets(STDIN)));
+$y = intval(trim(fgets(STDIN)));
+
+$soma = 0; 
+
+
+$menor = min($x, $y);
+$maior = max($x, $y);
+
+
+for ($i = $menor + 1; $i < $maior; $i++) {
+    if ($i % 2 != 0) { 
+        $soma += $i;
+    }
+}
+
+echo $soma . "\n";
+?>
+
+7 - (1103) Alarm Clock8
+
+<?php
+
+while (true) {
+
+    fscanf(STDIN, "%d %d %d %d", $hora_atual, $minuto_atual, $hora_despertar, $minuto_despertar);
+
+    if ($hora_atual == 0 && $minuto_atual == 0 && $hora_despertar == 0 && $minuto_despertar == 0) {
+        break;
+    }
+
+    $hora_atual_em_minutos = $hora_atual * 60 + $minuto_atual;
+    $hora_despertar_em_minutos = $hora_despertar * 60 + $minuto_despertar;
+    $tempo_sono = $hora_despertar_em_minutos - $hora_atual_em_minutos;
+
+    if ($tempo_sono <= 0) {
+        $tempo_sono += 24 * 60; // Adiciona 24 horas em minutos
+    }
+    echo $tempo_sono . "\n";
+}
+
+?>
+
+8 - (1024) Encryption9
+<?php
+$stdin = fopen('php://stdin', 'r');
+
+fscanf($stdin, "%d", $T);
+fgets($stdin); // Lê a nova linha após o número T
+
+while ($T--) {
+    $str = rtrim(fgets($stdin));
+    $str1 = '';
+    $k = strlen($str);
+    for ($i = 0; $i < $k; $i++) {
+        if (($str[$i] >= 'A' && $str[$i] <= 'Z') || ($str[$i] >= 'a' && $str[$i] <= 'z')) {
+            $str[$i] = chr(ord($str[$i]) + 3);
+        }
+    }
+    for ($j = $k - 1; $j >= 0; $j--) {
+        $str1 .= $str[$j];
+    }
+    for ($i = ($k / 2); $i < $k; $i++) {
+        $str1[$i] = chr(ord($str1[$i]) - 1);
+    }
+    echo $str1 . "\n";
+}
+
+fclose($stdin);
+?>
+
+
+9 - (1168) LED10
+<?php
+$n = intval(fgets(STDIN));
+
+for ($i = 0; $i < $n; $i++) {
+    $x = rtrim(fgets(STDIN));
+    $soma = 0;
+    
+    for ($j = 0; $j < strlen($x); $j++) {
+        if ($x[$j] == '1') {
+            $soma += 2;
+        } elseif ($x[$j] == '2' || $x[$j] == '3' || $x[$j] == '5') {
+            $soma += 5;
+        } elseif ($x[$j] == '4') {
+            $soma += 4;
+        } elseif ($x[$j] == '6' || $x[$j] == '9' || $x[$j] == '0') {
+            $soma += 6;
+        } elseif ($x[$j] == '7') {
+            $soma += 3;
+        } elseif ($x[$j] == '8') {
+            $soma += 7;
+        }
+    }
+    
+    echo $soma . " leds\n";
+}
+?>
+
+10 - (1253) Caesar Cipher11
+ <?php
+$alfabeto = '';
+$N = intval(fgets(STDIN));
+
+for ($i = 0; $i < $N; ++$i) {
+    $alfabeto = rtrim(fgets(STDIN));
+    $deslocamento = intval(fgets(STDIN));
+
+    for ($j = 0; $j < strlen($alfabeto); ++$j) {
+        $ascii_code = ord($alfabeto[$j]);
+        if ($ascii_code >= 65 && $ascii_code <= 90) {
+            $ascii_code = (($ascii_code - 65 - $deslocamento + 26) % 26) + 65;
+        }
+        $alfabeto[$j] = chr($ascii_code);
+    }
+
+    echo $alfabeto . "\n";
+}
+
+?>
+
+11 - (1259) Even and Odd12
+<?php
+// Importações não necessárias em PHP
+
+$lista = [];
+$par = [];
+$impar = [];
+
+$stdin = fopen('php://stdin', 'r');
+
+$n = intval(fgets($stdin));
+for ($i = 0; $i < $n; $i++) {
+    $lista[] = intval(fgets($stdin));
+}
+
+foreach ($lista as $x) {
+    if ($x % 2 == 0) {
+        $par[] = $x;
+    } else {
+        $impar[] = $x;
+    }
+}
+
+sort($par);
+sort($impar);
+$impar = array_reverse($impar);
+
+foreach ($par as $y) {
+    echo $y . "\n";
+}
+foreach ($impar as $z) {
+    echo $z . "\n";
+}
+
+fclose($stdin);
+?>
+
+12 - (1028) Collectable Cards
+
+<?php
+function MDC($a, $b)
+{
+    return ($b == 0) ? $a : MDC($b, $a % $b);
+}
+
+$stdin = fopen('php://stdin', 'r');
+
+fscanf($stdin, "%d", $N);
+
+for ($i = 0; $i < $N; ++$i)
+{
+    fscanf($stdin, "%d %d", $F1, $F2);
+    echo MDC($F1, $F2) . "\n";
+}
+
+fclose($stdin);
+
+?>
+
+
+/*
+Não consegui fazer muitas sem ultilizar o AI para me auxiliar.
+Eu irei treinar mais, até que não precise usar nenhuma.
+*/
